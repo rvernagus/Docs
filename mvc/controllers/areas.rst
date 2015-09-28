@@ -4,7 +4,7 @@ By `Tom Archer`
 
 :doc:`Areas </controllers/areas>` provide a way to separate a large MVC application into semantically-related groups of models, views, and controllers. Let's take a look at an example to illustrate how Areas are created and used. Let's say you have a store app that has two distinct groupings of controllers and views: Products and Services.
 
-Instead of having all of the controllers housed under the Controllers parent directory, and all the views housed under the Views parent directory, you could use Areas to group your views and controllers according to the area (or logical grouping) with which they're associated.
+Instead of having all of the controllers located under the Controllers parent directory, and all the views located under the Views parent directory, you could use Areas to group your views and controllers according to the area (or logical grouping) with which they're associated.
 
 - Project name
 
@@ -14,7 +14,7 @@ Instead of having all of the controllers housed under the Controllers parent dir
 
       - Controllers
 
-        - HomeController
+        - HomeController.cs
 
       - Views
 
@@ -26,7 +26,7 @@ Instead of having all of the controllers housed under the Controllers parent dir
 
       - Controllers
 
-        - HomeController
+        - HomeController.cs
 
       - Views
 
@@ -53,7 +53,7 @@ Once you've defined the folder hierarchy, you need to tell MVC that each control
       }
   }
 
-The final step is to set up a route definition that works with your newly created areas. The :doc:`routing` article goes into detail about how to create route definitions, including using conventional routes versus attribute routes. In this example, we'll use a conventional route. To do so, simply open the ``startup.cs`` file and modify it by adding the highlighted route definition below.
+The final step is to set up a route definition that works with your newly created areas. The :doc:`routing` article goes into detail about how to create route definitions, including using conventional routes versus attribute routes. In this example, we'll use a conventional route. To do so, simply open the ``Startup.cs`` file and modify it by adding the highlighted route definition below.
 
 .. code-block:: c#
   :emphasize-lines: 4-6
@@ -74,15 +74,15 @@ Now, when the user browses to *http://<yourApp>/products*, the ``Index`` action 
 Linking between areas
 ---------------------
 
-To link between areas, you simply specify the area in which the controller is defined. If the controller doesn't exist within an area, use an empty string.
+To link between areas, you simply specify the area in which the controller is defined. If the controller is not a part of an area, use an empty string.
 
-The following snippet shows how to link from to a controller action that is defined within an area named *Products*.
+The following snippet shows how to link to a controller action that is defined within an area named *Products*.
 
 .. code-block:: c#
 
   @Html.ActionLink("See Products Home Page", "Index", "Home", new { area = "Products" }, null)
 
-To link to a controller action that is outside an area, simply specify an empty string.
+To link to a controller action that is not part of an area, simply specify an empty string for the area.
 
 .. code-block:: c#
 
