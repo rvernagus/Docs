@@ -34,6 +34,20 @@ Instead of having all of the controllers located under the Controllers parent di
 
           - Index.cshtml
 
+Looking at the preceding directory hierarchy example, there are a few guidelines to keep in mind when defining areas:
+
+- A directory called *Areas* must exist as a child directory of the project.
+- The *Areas* directory contains a subdirectory for each of your project's areas (*Products* and *Services*, in this example).
+- Your controllers should be located as follows:
+  ``/Areas/[area]/Controllers/[controller].cs``
+- Your views should be located as follows:
+  ``/Areas/[area]/Views/[controller]/[action].cshtml``
+
+Note that if you have a view that is shared across controllers, it can be located in either of the following locations:
+
+- ``/Areas/[area]/Views/Shared/[action].cshtml``
+- ``/Views/Shared/[action].cshtml``
+
 Once you've defined the folder hierarchy, you need to tell MVC that each controller is associated with an area. You do that by decorating the controller name with the ``[Area]`` attribute.
 
 .. code-block:: c#
@@ -90,4 +104,4 @@ To link to a controller action that is not part of an area, simply specify an em
 
 Summary
 -------
-Areas are a very useful tool for grouping semantically-related controllers and actions under a common parent folder. In this article, you learned how to set up your folder hierarchy to support ``Areas``, how to specify the ``[Area]`` attribute to denote a controller as belonging to a specified area, and how to define your routes with areas. Finally, you saw how to link between areas - including linking from outside to inside, and linking from inside to outside.
+Areas are a very useful tool for grouping semantically-related controllers and actions under a common parent folder. In this article, you learned how to set up your folder hierarchy to support ``Areas``, how to specify the ``[Area]`` attribute to denote a controller as belonging to a specified area, and how to define your routes with areas.
