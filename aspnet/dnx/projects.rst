@@ -229,7 +229,7 @@ There is significantly less disk IO involved in the second list.
 
 The lock file ensures that after you run ``dnu restore``, you have a fixed set of packages that you are referencing. When restoring, the DNU generates the lock file which specifies the exact versions that your project will use. This way, versions only get modified when you run ``dnu restore``, not during run-time. Restoring also ends up improving performance at run-time since DNX no longer has to probe the packages directory to find the right version to use, DNX just does what the lock file instructs DNX to do. 
 
-.. Note:: The primary advantage of the lock file is to prevent the application from be affected by someone else installing a package into your global install directory. For this reason, the lock file is mandatory to run. If you do not have a lock file, DNX will fail to load your application.
+.. Note:: The primary advantage of the lock file is to prevent the application from being affected by someone else installing a package into your global install directory. For this reason, the lock file is mandatory to run. If you do not have a lock file, DNX will fail to load your application.
 
 There is a field in the lock file, ``locked``, which can be set to true either manually or via ``dnu restore —lock``. Setting this field to ``true`` specifies that ``dnu restore`` will just download the versions specified in the lock file and will not do any dependency graph walking or version selection. You can run ``dnu restore —lock`` to generate a locked lock file. Future restores will not change your installed version, unless you use ``dnu restore --unlock`` to remove the lock. You could lock your lock file and check it in on a release branch to ensure that you always get the exact version you expect, but leave it unlocked ()and ignored by source control on development branch(es).
 
@@ -591,7 +591,7 @@ You use the ``dnu publish`` command to package your application into a self-cont
 
 The packages directory contains all the packages your application needs to run.
 
-The appName directory will contain all of your applications code, if you have project references they will appear as their own directory with code at this level as well.
+The appName directory will contain all of your application's code, if you have project references they will appear as their own directory with code at this level as well.
 
 The publish command will also hoist any commands from your *project.json* file into batch files. Running any of these commands is the same as running  ``dnx <command>``. For a list of usage, arguments, and options of the ``publish`` command, enter the following in the command windows::
 
